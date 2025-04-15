@@ -1,0 +1,32 @@
+<h2>{{title}}</h2>
+<h2>Add new movie</h2>
+<form id="add-movie-form">
+  <input name="name" placeholder="Name" required>
+  <input name="genre" placeholder="Genre" required>
+  <input name="year" placeholder="Year" type="number" required>
+  <input name="price" placeholder="Price" type="number" required>
+  <label>
+    <input type="checkbox" name="available"> Available
+  </label>
+  <button type="submit">Add</button>
+</form>
+
+<hr>
+<h2>{{title}}</h2>
+<ul class="movie-list">
+  {{#each movies}}
+    <li class="movie-item">
+      <h3>{{name}} ({{year}})</h3>
+      <p><strong>Genre:</strong> {{genre}}</p>
+      <p><strong>Price:</strong> €{{price}}</p>
+      <p><strong>Status:</strong>
+        {{#if available}}
+          <span class="status available">Available</span>
+        {{else}}
+          <span class="status rented">Rented</span>
+        {{/if}}
+        <button onclick="deleteMovie('{{_id}}')">DELETE</button>
+      </p>
+    </li>
+  {{/each}}
+</ul>
